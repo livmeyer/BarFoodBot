@@ -1,13 +1,12 @@
-from pydub import AudioSegment
-from pydub.playback import play
 import threading
 import os
 
 #Thread For Playing audio
 def audio ():
-    print("Playing audio")
-    song = AudioSegment.from_mp3(os.getcwd() + '/Audio/Song1.mp3')
-    play(song)
+    file = os.getcwd() + "\Audio\Song1.mp3"
+    print("Playing audio from: " + file)
+    os.system("mpg123" + file)
+
 
 #Thread Handles Leds
 def led ():
