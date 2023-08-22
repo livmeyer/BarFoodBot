@@ -3,9 +3,9 @@ import os
 
 #Thread For Playing audio
 def audio ():
-    file = os.getcwd() + "\Audio\Song1.mp3"
+    file = os.getcwd() + "/Audio/Song1.mp3"
     print("Playing audio from: " + file)
-    os.system("mpg123" + file)
+    os.system("mpg123 " + file)
 
 
 #Thread Handles Leds
