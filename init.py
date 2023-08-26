@@ -1,27 +1,27 @@
-from pydub import AudioSegment
-from pydub.playback import play
+from audio import *
+from led import *
+from coin import *
+from photores import *
+
 import threading
+import time
 import os
 
-#Thread For Playing audio
-def audio ():
-    file = os.getcwd() + '/Audio/Song1.mp3'
-    print("Playing audio from: " + file)
-    song = AudioSegment.from_mp3(file)
-    play(song)
+
+thread_audio = threading.Thread(target=idle_audio, args=())
+thread_led = threading.Thread(target=idle_led, args=())
+thread_coin = threading.Thread(target=coinListener, args=())
+thread_photres = threading.Thread(target=photores_listener, args=())
 
 
-#Thread Handles Leds
-def led ():
-    print("Leds Activated")
+#Waiting for coin
+thread_coin.start()
+thread_audio.start()
+thread_led.start()
+thread_coin.join()
+thread_audio.join()
+thread_led.join()
 
-threadAudio = threading.Thread(target=audio, args=())
-threadLED = threading.Thread(target=led, args=())
-
-threadAudio.start()
-threadLED.start()
-
-threadAudio.join()
-threadLED.join()
-
-print("All threads have finished.")
+#Player Plays Game
+thread_photres.start()
+thread_photres.join()
