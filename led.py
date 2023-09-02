@@ -1,8 +1,15 @@
-import RPi.GPIO as GPIO
+import spidev
+import ws2812
+import time
 
-PIXEL_COUNT = 100
+spi = spidev.SpiDev()
+spi.open(0,0)
 
-#Thread Handles Leds
-def idle_led ():
-    print("Leds Activated")
-    
+
+current_lights = [[0,0,0]] * 100
+
+def idle_audio(delay):
+    print("Leds are on")
+
+#write 4 WS2812's, with the following colors: red, green, blue, yellow
+ws2812.write2812(spi, current_lights)
