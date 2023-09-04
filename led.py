@@ -8,7 +8,7 @@ spi.open(0,0)
 
 current_lights = [[0,0,0]] * 100
 
-def idle_audio(delay):
+def idle_():
     print("Leds are on")
 
 #write 4 WS2812's, with the following colors: red, green, blue, yellow
