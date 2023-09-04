@@ -17,7 +17,7 @@ def stop_audio ():
 def play_game_audio ():
     print("Stop Idle Audio")
 
-def play_moan ():
+def play_win_sound ():
     print("Moaning Audio")
 
 def play_lose_sound ():
