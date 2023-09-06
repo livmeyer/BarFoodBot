@@ -9,23 +9,26 @@ CURRENT_SONG = 1
 
 
 def idle_audio ():
-    Song.play()
+    global CURRENT_SONG, SONG_COUNT
+    CURRENT_SONG = (CURRENT_SONG + 1) % SONG_COUNT
 
 def stop_audio ():
     pygame.mixer.stop()
 
 def play_game_audio ():
-    print("Stop Idle Audio")
+    song.play()
 
 def play_win_sound ():
-    print("Moaning Audio")
+    win.play()
 
 def play_lose_sound ():
-    print("Losing Audio")
+    loose.play()
 
 
 pygame.init()
 pygame.mixer.init()
 
-file = os.getcwd() + '/Audio/Song1.wav'
-Song = pygame.mixer.Sound(file)
+file = os.getcwd() + '/Audio/'
+song = pygame.mixer.Sound(file + 'song1.wav')
+loose = pygame.mixer.Sound(file + 'loose.wav')
+win = pygame.mixer.Sound(file + 'win.wav')
