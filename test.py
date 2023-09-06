@@ -1,7 +1,18 @@
-import spidev
-import ws2812
-spi = spidev.SpiDev()
-spi.open(0,0)
+import csv
 
-#write 4 WS2812's, with the following colors: red, green, blue, yellow
-ws2812.write2812(spi, [[10,0,0], [0,10,0], [0,0,10], [10, 10, 0]])
+# Initialize an empty list to store the integer values
+data = []
+
+# Open the CSV file for reading
+with open('LED_Patterns/idle/phase1.csv', mode='r') as csv_file:
+    # Create a CSV reader object
+    csv_reader = csv.reader(csv_file)
+    
+    # Loop through each row in the CSV file
+    for row in csv_reader:
+        # Convert each item in the row to an integer and append it to the list
+        int_row = [row]
+        data.append(int_row)
+
+# Now, 'data' is a list of lists containing the integer values from the CSV file
+print(data)

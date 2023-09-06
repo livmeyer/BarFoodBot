@@ -3,9 +3,9 @@ import os
 import threading
 import time
 
-SONG_COUNT = 1
+SONG_COUNT = 7
 CURRENT_SONG = 1
-
+ONIDLE = False
 
 
 def idle_audio ():
@@ -16,7 +16,7 @@ def stop_audio ():
     pygame.mixer.stop()
 
 def play_game_audio ():
-    song.play()
+    game_music.play()
 
 def play_win_sound ():
     win.play()
@@ -29,6 +29,10 @@ pygame.init()
 pygame.mixer.init()
 
 file = os.getcwd() + '/Audio/'
-song = pygame.mixer.Sound(file + 'song1.wav')
+game_music = pygame.mixer.Sound(file + 'game.wav')
 loose = pygame.mixer.Sound(file + 'loose.wav')
 win = pygame.mixer.Sound(file + 'win.wav')
+songs = []
+
+for i in range(SONG_COUNT):
+    songs.append(pygame.mixer.Sound(file + 'Songs/song'+ str(i + 1) + '.wav'))
