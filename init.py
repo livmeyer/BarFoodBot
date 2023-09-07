@@ -16,17 +16,14 @@ while True:
     idle_audio()
     time.sleep(2)
     coin_listener()
-    #stop_audio()
 
     #Playing Game
     play_game_audio()
     print("Game Started")
-    set_led_state('playing')
+    set_led_state('game')
     
     time.sleep(2)
     result = photo_listener()
-    stop_audio()
-    reset_phase()
     if result == 0:
         print("You lost")
         set_led_state('los')
@@ -36,7 +33,6 @@ while True:
         set_led_state('win')
         play_win_sound()
     time.sleep(5)
-    stop_audio()
 
 
 
